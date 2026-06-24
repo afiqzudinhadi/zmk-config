@@ -4,6 +4,8 @@ include:
   ### CORNE START ###
   - board: nice_nano_v2
     shield: corne_left nice_oled
+    snippet: zmk-usb-logging
+    cmake-args: -DCONFIG_ZMK_USB_LOGGING=y -DCONFIG_LOG_PROCESS_THREAD_STARTUP_DELAY_MS=8000
     artifact-name: nice_corne_left_oled_rgb
   - board: nice_nano_v2
     shield: corne_right nice_oled
