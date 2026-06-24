@@ -13,8 +13,6 @@
 #include <dt-bindings/zmk/backlight.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/reset.h>
-#include <dt-bindings/zmk/javelin_steno.h>
-#include <behaviors/javelin_steno.dtsi>
 
 &led_strip {
     chain-length = <27>;
@@ -95,10 +93,10 @@
         steno_layer {
             display-name = "STEN";
             bindings = <
-&none                    &javsteno STENO_NUM1  &javsteno STENO_NUM2  &javsteno STENO_NUM3  &javsteno STENO_NUM4  &javsteno STENO_NUM5       &javsteno STENO_NUM6  &javsteno STENO_NUM7  &javsteno STENO_NUM8  &javsteno STENO_NUM9   &javsteno STENO_NUM10  &to 4
-&mo 4                    &javsteno STENO_S1    &javsteno STENO_TL    &javsteno STENO_PL    &javsteno STENO_HL    &javsteno STENO_STAR1      &javsteno STENO_STAR3 &javsteno STENO_FR    &javsteno STENO_PR    &javsteno STENO_LR     &javsteno STENO_TR     &javsteno STENO_DR
-&none                    &javsteno STENO_S2    &javsteno STENO_KL    &javsteno STENO_WL    &javsteno STENO_RL    &javsteno STENO_STAR2      &javsteno STENO_STAR4 &javsteno STENO_RR    &javsteno STENO_BR    &javsteno STENO_GR     &javsteno STENO_SR     &javsteno STENO_ZR
-                                                                     &none  &javsteno STENO_A  &javsteno STENO_O      &javsteno STENO_E     &javsteno STENO_U     &none
+&none   &none  &none  &none  &none  &none      &none  &none  &none  &none  &none  &to 4
+&mo 4   &none  &none  &none  &none  &none      &none  &none  &none  &none  &none  &none
+&none   &none  &none  &none  &none  &none      &none  &none  &none  &none  &none  &none
+                       &none  &none  &none      &none  &none  &none
             >;
         };
 

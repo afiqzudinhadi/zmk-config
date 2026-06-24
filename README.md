@@ -1,6 +1,6 @@
 # Corne Keyboard Custom Keymaps (ZMK)
 
-Custom keymaps for a Corne 42-key split keyboard running ZMK firmware with on-board stenography.
+Custom keymaps for a Corne 42-key split keyboard running ZMK firmware.
 
 # Table of Contents
 
@@ -42,81 +42,14 @@ Custom keymaps for a Corne 42-key split keyboard running ZMK firmware with on-bo
 | LEDs | WS2812 underglow (6/half) + per-key (21/half) — 54 total |
 | BT Profiles | 5 (BT0-BT4) |
 | ZMK Studio | Disabled (see [Enabling ZMK Studio](#enabling-zmk-studio)) |
-| Steno Engine | Javelin (Lapwing dictionary) |
 | Vendor | KeebMaker |
 | Vendor Config | [KeebMaker/zmk-config](https://github.com/KeebMaker/zmk-config) |
 
 # Current Keymap
 
-Key positions reference:
-```
- 0  1  2  3  4  5  |  6  7  8  9 10 11
-12 13 14 15 16 17  | 18 19 20 21 22 23
-24 25 26 27 28 29  | 30 31 32 33 34 35
-         36 37 38  | 39 40 41
-```
+![Corne Keymap](keymap-drawer/corne.svg)
 
-### Layer 0: CARP (Carpalx QGMLWY)
-```
-`      Q  G  M  L  W  |  Y  F  U  B  ;    ->HUB
-[HUB]  D  S  T  N  R  |  I  A  E  O  H    '
-LSHFT  Z  X  C  V  J  |  K  P  ,  .  /    RSHFT
-        [RGB]  CTRL  GUI | SPC  ALT  MUTE/PP
-
-Combos (layers 0+1):
-  top+home row same col = 1-0, shift+combo = ! @ # $ % ^ & * ( )
-  G+M (W+E on QWRT) = ESC
-  S+T (S+D on QWRT) = TAB
-  U+B (I+O on QWRT) = BSPC
-  E+O (K+L on QWRT) = ENTER
-[HUB] = hold opens HUB layer, release goes back
-[RGB] = tap-dance: 1×=toggle, 2×=effect fwd, 3×=effect rev
-MUTE/PP = tap mute, hold play/pause
-```
-
-### Layer 1: QWRT (QWERTY)
-```
-`      Q  W  E  R  T  |  Y  U  I  O  P    ->HUB
-[HUB]  A  S  D  F  G  |  H  J  K  L  ;    '
-LSHFT  Z  X  C  V  B  |  N  M  ,  .  /    RSHFT
-        [RGB]  CTRL  GUI | SPC  ALT  MUTE/PP
-
-Combos: same as CARP (top+home = 1-0, W+E = ESC, S+D = TAB, I+O = BSPC, K+L = ENTER)
-```
-
-### Layer 2: STEN (Javelin Steno — Lapwing)
-```
-_      #  #  #  #  #  |  #  #  #  #  #    ->HUB
-[HUB]  S  T  P  H  *  |  *  F  P  L  T    D
-_      S  K  W  R  *  |  *  R  B  G  S    Z
-              _  A  O  |  E  U  _
-```
-
-### Layer 3: FPS (WASD shifted right for ortho)
-```
-1/ESC  2     Q  [W]  E/3   R/4  | 5    6    7    8    9    ->HUB
-TAB    SHFT [A] [S] [D]    F    | _    _    _    _    _    _
-M/ALT  Z     X   C   V     G    | _    _    _    _    _    _
-              T     CTRL  SPC   | _    _    _
-
-Hold-taps: 1=tap/ESC=hold, E=tap/3=hold, R=tap/4=hold, M=tap/ALT=hold
-```
-
-### Layer 4: HUB (Utility — BT, RGB, Media, Nav)
-```
-BT_CLR BT0    BT1    BT2    BT3     BT4     | +      [     UP    ]     *    =
-OUT_TOG HUE+  SAT+   BRT+   SCRN+   VOL+    | -      LEFT  DOWN  RIGHT /    \
-LSHFT  HUE-   SAT-   BRT-   SCRN-   VOL-    | ->CARP ->QWRT ->STEN ->FPS [CLR] RSHFT
-             [RGB]    CTRL   GUI              | SPC    ALT   MUTE/PP
-
-OUT_TOG = toggle USB/BLE output
-HUE/SAT/BRT = RGB underglow hue, saturation, brightness
-SCRN = display brightness (C_BRI_UP/DN)
-VOL = volume up/down
-[RGB] = tap-dance: 1×=toggle, 2×=effect fwd, 3×=effect rev
-[CLR] = tap-dance color presets: 1×=purple, 2×=white, 3×=red, 4×=blue, 5×=green
-MUTE/PP = tap mute, hold play/pause
-```
+See [keymap-drawer/](keymap-drawer/) for text reference and keymap-drawer source files.
 
 # Related Resources
 
@@ -124,7 +57,6 @@ MUTE/PP = tap mute, hold play/pause
 - [ZMK Keycodes Reference](https://zmk.dev/docs/codes)
 - [ZMK Studio](https://zmk.studio/) - Live keymap editor (no flashing needed)
 - [Keymap Editor](https://nickcoutsos.github.io/keymap-editor/) - Visual keymap editor for GitHub repos
-- [Javelin Steno Engine](https://github.com/jthlim/javelin-steno) - On-board steno engine
 - [Vendor Config (KeebMaker)](https://github.com/KeebMaker/zmk-config)
 
 # Pre-requisites
@@ -256,7 +188,7 @@ The BLE name is cached in device settings. Do a [Settings Reset](#settings-reset
 
 ### Hardware
 
-54 WS2812 LEDs total — 6 underglow + 21 per-key per half. Chain length set in `boards/shields/corne/boards/nice_nano_v2.overlay`.
+54 WS2812 LEDs total — 6 underglow + 21 per-key per half. Chain length set in `config/nice_nano_v2.overlay`.
 
 ### Config
 
@@ -327,16 +259,7 @@ ZMK Studio is disabled by default in this config. To enable live keymap editing:
    snippet: rgb-config studio-rpc-usb-uart
    ```
 
-3. In `boards/shields/corne/corne.zmk.yml`, add `studio` to features:
-   ```yaml
-   features:
-     - keys
-     - display
-     - underglow
-     - studio
-   ```
-
-4. Push and flash.
+3. Push and flash.
 
 5. Go to [zmk.studio](https://zmk.studio/) in Chrome → connect via USB or BLE → edit layers visually.
 
