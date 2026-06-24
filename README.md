@@ -25,6 +25,7 @@ Custom keymaps for a Corne 42-key split keyboard running ZMK firmware with on-bo
     - [Bluetooth pairing issues](#bluetooth-pairing-issues)
     - [Layers not switching correctly](#layers-not-switching-correctly)
     - [Keyboard name not changing after flash](#keyboard-name-not-changing-after-flash)
+- [RGB Underglow](#rgb-underglow)
 - [Enabling ZMK Studio](#enabling-zmk-studio)
 
 # Hardware Info
@@ -250,6 +251,66 @@ If `->STEN`, `->FPS`, or other layer switches go to CARP instead of the expected
 ### Keyboard name not changing after flash
 
 The BLE name is cached in device settings. Do a [Settings Reset](#settings-reset) and re-pair.
+
+# RGB Underglow
+
+### Hardware
+
+54 WS2812 LEDs total — 6 underglow + 21 per-key per half. Chain length set in `boards/shields/corne/boards/nice_nano_v2.overlay`.
+
+### Config
+
+RGB settings are in `config/corne.conf`:
+
+| Setting | Value | Description |
+|---------|-------|-------------|
+| `CONFIG_ZMK_RGB_UNDERGLOW` | `y` | Enable RGB |
+| `CONFIG_ZMK_RGB_UNDERGLOW_ON_START` | `n` | Off on boot |
+| `CONFIG_WS2812_STRIP` | `y` | WS2812 LED driver |
+| `CONFIG_ZMK_RGB_UNDERGLOW_EFF_START` | `3` | Default effect: 0=Solid, 1=Breathe, 2=Spectrum, 3=Swirl |
+| `CONFIG_ZMK_RGB_UNDERGLOW_BRT_STEP` | `1` | Brightness step (%) |
+| `CONFIG_ZMK_RGB_UNDERGLOW_AUTO_OFF_IDLE` | `y` | Turn off when idle |
+| `CONFIG_ZMK_RGB_UNDERGLOW_EXT_POWER` | `n` | Don't toggle external power with RGB |
+
+Optional tuning (commented out in config):
+- `HUE_STEP` / `SAT_STEP` — hue and saturation adjustment step
+- `HUE_START` / `SAT_START` / `BRT_START` — initial color values
+
+### Effects
+
+| `EFF_START` | Effect |
+|-------------|--------|
+| 0 | Solid color |
+| 1 | Breathe |
+| 2 | Spectrum |
+| 3 | Swirl |
+
+Cycle at runtime with `RGB_EFF` (next) / `RGB_EFR` (previous).
+
+### Keycodes
+
+| Keycode | Action |
+|---------|--------|
+| `RGB_TOG` | Toggle on/off |
+| `RGB_EFF` | Next effect |
+| `RGB_EFR` | Previous effect |
+| `RGB_HUI` / `RGB_HUD` | Hue up/down |
+| `RGB_SAI` / `RGB_SAD` | Saturation up/down |
+| `RGB_BRI` / `RGB_BRD` | Brightness up/down |
+| `RGB_SPI` / `RGB_SPD` | Speed up/down |
+| `RGB_COLOR_HSB(h,s,b)` | Set specific color |
+
+Docs: [zmk.dev/docs/keymaps/behaviors/underglow](https://zmk.dev/docs/keymaps/behaviors/underglow) · [zmk.dev/docs/config/underglow](https://zmk.dev/docs/config/underglow)
+
+### Runtime Controls (HUB Layer)
+
+| Key | Action |
+|-----|--------|
+| `[RGB]` | Tap-dance: 1×=toggle, 2×=effect fwd, 3×=effect rev |
+| `[CLR]` | Tap-dance color presets: purple → white → red → blue → green |
+| `HUE+` / `HUE-` | Adjust hue |
+| `SAT+` / `SAT-` | Adjust saturation |
+| `BRT+` / `BRT-` | Adjust brightness |
 
 # Enabling ZMK Studio
 
