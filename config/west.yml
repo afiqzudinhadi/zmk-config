@@ -2,6 +2,9 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    # ZMK fork with per-key RGB layer support (darknao's patches on v0.3.0)
+    - name: afiqzudinhadi-zmk
+      url-base: https://github.com/afiqzudinhadi
     # dongle_display
     - name: englmaxi
       url-base: https://github.com/englmaxi
@@ -12,13 +15,11 @@ manifest:
     - name: KeebMaker
       url-base: https://github.com/KeebMaker
   projects:
-    # Pinned to v0.3.0 instead of `main`: ZMK main tracks Zephyr 4.1, whose
-    # board-model rewrite renamed `nice_nano_v2` (now `nice_nano//zmk`) and
-    # split the `WS2812_STRIP` Kconfig symbol per-driver. Bumping this back to
-    # `main` will break every build.yaml entry below until those are updated.
+    # Personal fork of ZMK v0.3.0 + darknao's per-key RGB layer patches.
+    # Base is v0.3.0 (not main) — see commit history for patch attribution.
     - name: zmk
-      remote: zmkfirmware
-      revision: v0.3.0
+      remote: afiqzudinhadi-zmk
+      revision: rgb-layer
       import: app/west.yml
     # dongle_display
     - name: zmk-dongle-display
