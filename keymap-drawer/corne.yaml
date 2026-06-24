@@ -1,0 +1,262 @@
+layout: {zmk_keyboard: corne}
+layers:
+  CARP:
+  - '`'
+  - Q
+  - G
+  - M
+  - L
+  - W
+  - Y
+  - F
+  - U
+  - B
+  - ;
+  - {t: HUB, h: toggle}
+  - HUB
+  - D
+  - S
+  - T
+  - N
+  - R
+  - I
+  - A
+  - E
+  - O
+  - H
+  - ''''
+  - $$mdi:apple-keyboard-shift$$
+  - Z
+  - X
+  - C
+  - V
+  - J
+  - K
+  - P
+  - ','
+  - .
+  - /
+  - $$mdi:apple-keyboard-shift$$
+  - '&td_rgb'
+  - $$mdi:apple-keyboard-control$$
+  - $$mdi:apple-keyboard-command$$
+  - ␣
+  - $$mdi:apple-keyboard-option$$
+  - {t: MUTE, h: PLAY PAUSE}
+  QWRT:
+  - '`'
+  - Q
+  - W
+  - E
+  - R
+  - T
+  - Y
+  - U
+  - I
+  - O
+  - P
+  - {t: HUB, h: toggle}
+  - HUB
+  - A
+  - S
+  - D
+  - F
+  - G
+  - H
+  - J
+  - K
+  - L
+  - ;
+  - ''''
+  - $$mdi:apple-keyboard-shift$$
+  - Z
+  - X
+  - C
+  - V
+  - B
+  - N
+  - M
+  - ','
+  - .
+  - /
+  - $$mdi:apple-keyboard-shift$$
+  - '&td_rgb'
+  - $$mdi:apple-keyboard-control$$
+  - $$mdi:apple-keyboard-command$$
+  - ␣
+  - $$mdi:apple-keyboard-option$$
+  - {t: MUTE, h: PLAY PAUSE}
+  STEN:
+  - ''
+  - '&javsteno STENO_NUM1'
+  - '&javsteno STENO_NUM2'
+  - '&javsteno STENO_NUM3'
+  - '&javsteno STENO_NUM4'
+  - '&javsteno STENO_NUM5'
+  - '&javsteno STENO_NUM6'
+  - '&javsteno STENO_NUM7'
+  - '&javsteno STENO_NUM8'
+  - '&javsteno STENO_NUM9'
+  - '&javsteno STENO_NUM10'
+  - {t: HUB, h: toggle}
+  - HUB
+  - '&javsteno STENO_S1'
+  - '&javsteno STENO_TL'
+  - '&javsteno STENO_PL'
+  - '&javsteno STENO_HL'
+  - '&javsteno STENO_STAR1'
+  - '&javsteno STENO_STAR3'
+  - '&javsteno STENO_FR'
+  - '&javsteno STENO_PR'
+  - '&javsteno STENO_LR'
+  - '&javsteno STENO_TR'
+  - '&javsteno STENO_DR'
+  - ''
+  - '&javsteno STENO_S2'
+  - '&javsteno STENO_KL'
+  - '&javsteno STENO_WL'
+  - '&javsteno STENO_RL'
+  - '&javsteno STENO_STAR2'
+  - '&javsteno STENO_STAR4'
+  - '&javsteno STENO_RR'
+  - '&javsteno STENO_BR'
+  - '&javsteno STENO_GR'
+  - '&javsteno STENO_SR'
+  - '&javsteno STENO_ZR'
+  - ''
+  - '&javsteno STENO_A'
+  - '&javsteno STENO_O'
+  - '&javsteno STENO_E'
+  - '&javsteno STENO_U'
+  - ''
+  FPS:
+  - {t: '1', h: Esc}
+  - '2'
+  - Q
+  - W
+  - {t: E, h: '3'}
+  - {t: R, h: '4'}
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - {t: HUB, h: toggle}
+  - ↹
+  - $$mdi:apple-keyboard-shift$$
+  - A
+  - S
+  - D
+  - F
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: M, h: '$$mdi:apple-keyboard-option$$'}
+  - Z
+  - X
+  - C
+  - V
+  - G
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - T
+  - $$mdi:apple-keyboard-control$$
+  - ␣
+  - ''
+  - ''
+  - ''
+  HUB:
+  - BT CLR
+  - BT 1
+  - BT 2
+  - BT 3
+  - BT 4
+  - BT 5
+  - +
+  - '['
+  - ↑
+  - ']'
+  - '*'
+  - '='
+  - {t: OUT TOG, type: held}
+  - {t: '$$mdi:led-on$$', s: '$$mdi:palette$$', type: sym_by_sym}
+  - {t: '$$mdi:led-outline$$', s: '$$mdi:eyedropper$$', type: sym_by_sym}
+  - {t: '$$mdi:led-outline$$', s: '$$tabler:brightness-down$$', type: sym_by_sym}
+  - BRI UP
+  - Vol Up
+  - '-'
+  - ←
+  - ↓
+  - →
+  - /
+  - \
+  - $$mdi:apple-keyboard-shift$$
+  - {t: '$$mdi:led-outline$$', s: '$$mdi:palette$$', type: sym_by_sym}
+  - {t: '$$mdi:led-on$$', s: '$$mdi:eyedropper$$', type: sym_by_sym}
+  - {t: '$$mdi:led-on$$', s: '$$tabler:brightness-up$$', type: sym_by_sym}
+  - BRI DN
+  - Vol Down
+  - {t: CARP, h: toggle}
+  - {t: QWRT, h: toggle}
+  - {t: STEN, h: toggle}
+  - {t: FPS, h: toggle}
+  - '&td_colors'
+  - $$mdi:apple-keyboard-shift$$
+  - '&td_rgb'
+  - $$mdi:apple-keyboard-control$$
+  - $$mdi:apple-keyboard-command$$
+  - ␣
+  - $$mdi:apple-keyboard-option$$
+  - {t: MUTE, h: PLAY PAUSE}
+combos:
+- p: [1, 13]
+  k: '1'
+  l: [CARP, QWRT]
+- p: [2, 14]
+  k: '2'
+  l: [CARP, QWRT]
+- p: [3, 15]
+  k: '3'
+  l: [CARP, QWRT]
+- p: [4, 16]
+  k: '4'
+  l: [CARP, QWRT]
+- p: [5, 17]
+  k: '5'
+  l: [CARP, QWRT]
+- p: [6, 18]
+  k: '6'
+  l: [CARP, QWRT]
+- p: [7, 19]
+  k: '7'
+  l: [CARP, QWRT]
+- p: [8, 20]
+  k: '8'
+  l: [CARP, QWRT]
+- p: [9, 21]
+  k: '9'
+  l: [CARP, QWRT]
+- p: [10, 22]
+  k: '0'
+  l: [CARP, QWRT]
+- p: [8, 9]
+  k: $$mdi:backspace-outline$$
+  l: [CARP, QWRT]
+- p: [20, 21]
+  k: ⏎
+  l: [CARP, QWRT]
+- p: [2, 3]
+  k: Esc
+  l: [CARP, QWRT]
+  draw_separate: true
+- p: [14, 15]
+  k: ↹
+  l: [CARP, QWRT]
+  draw_separate: true

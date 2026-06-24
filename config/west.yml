@@ -1,0 +1,55 @@
+manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    # dongle_display
+    - name: englmaxi
+      url-base: https://github.com/englmaxi
+    # nice_oled - nice_epaper - dongle_display!view - oled Adapter
+    - name: mctechnology17
+      url-base: https://github.com/mctechnology17
+    # fork of zmk-nice-oled with custom KM medal animation
+    - name: KeebMaker
+      url-base: https://github.com/KeebMaker
+    # javelin steno engine module
+    - name: afiqzudinhadi
+      url-base: https://github.com/afiqzudinhadi
+    # javelin steno engine source
+    - name: jthlim
+      url-base: https://github.com/jthlim
+  projects:
+    # Pinned to v0.3.0 instead of `main`: ZMK main tracks Zephyr 4.1, whose
+    # board-model rewrite renamed `nice_nano_v2` (now `nice_nano//zmk`) and
+    # split the `WS2812_STRIP` Kconfig symbol per-driver. Bumping this back to
+    # `main` will break every build.yaml entry below until those are updated.
+    - name: zmk
+      remote: zmkfirmware
+      revision: v0.3.0
+      import: app/west.yml
+    # dongle_display
+    - name: zmk-dongle-display
+      remote: englmaxi
+      revision: v0.3
+    # nice_oled - nice_epaper (fork with custom KM medal animation)
+    - name: zmk-nice-oled
+      remote: KeebMaker
+      revision: km-medal-animation
+    # dongle_display!view
+    - name: zmk-dongle-display-view
+      remote: mctechnology17
+      revision: main
+    # oled Adapter
+    - name: zmk-oled-adapter
+      remote: mctechnology17
+      revision: main
+    # javelin steno engine module
+    - name: zmk-javelin-steno
+      remote: afiqzudinhadi
+      revision: main
+    # javelin steno engine source (fetched into module's javelin/ dir)
+    - name: javelin-steno
+      remote: jthlim
+      revision: main
+      path: zmk-javelin-steno/javelin
+  self:
+    path: config
