@@ -266,3 +266,45 @@ ZMK Studio is disabled by default in this config. To enable live keymap editing:
 **Limitations:** Cannot add combos, custom behaviors, or change display/RGB config.
 
 **Warning:** ZMK Studio saves changes to flash storage. These override the compiled keymap. If layers behave unexpectedly after flashing, do a [Settings Reset](#settings-reset).
+
+# Per-Key RGB Layer Indicators
+
+Uses [darknao's per-key RGB patches](https://github.com/darknao/zmk) cherry-picked onto ZMK v0.3.0 at [afiqzudinhadi/zmk@rgb-layer](https://github.com/afiqzudinhadi/zmk/tree/rgb-layer).
+
+Effect #4 (Layer Indicators) shows different per-key colors based on active keymap layer. Colors are defined as hex RGB values in `corne.keymap` under the `underglow-layer` node.
+
+### LED Chain Order (Foostan Corne v1.1)
+
+Column-by-column snake, not row-by-row:
+```
+Chain 0-5:   Underglow (6 LEDs)
+Chain 6-9:   Thumb outer → bottom/home/top col0
+Chain 10-12: Top/home/bottom col1
+Chain 13-14: Thumb mid → Thumb inner
+Chain 15-17: Bottom/home/top col2
+Chain 18-20: Top/home/bottom col3
+Chain 21-23: Bottom/home/top col4
+Chain 24-26: Top/home/bottom col5
+```
+
+### Changing Layer Colors
+
+Edit `underglow-layer` bindings in `config/corne.keymap`. Each layer has 42 entries (one per key position):
+
+```dts
+carp_rgb {
+    layer-id = <0>;
+    bindings = <&ug GREEN &ug BLUE ...>;  // 42 entries
+};
+```
+
+Available colors (`dt-bindings/zmk/rgb_colors.h`): `GREEN` `RED` `BLUE` `TEAL` `ORANGE` `YELLOW` `GOLD` `PURPLE` `PINK` `WHITE` `___` (off)
+
+Custom colors: `#define CYAN 0x00ffff` then `&ug CYAN`
+
+### Notes
+
+- **`chain-length = <27>`** must be set in `corne.keymap` — the fork's shield overlay defaults to 10.
+- **Underglow LEDs** turn off on effect #4 (mapped to `255` in pixel-lookup). To give them layer colors, map to key positions instead of `255`.
+- Brightness/hue/saturation controls don't affect layer indicator colors ([#1](https://github.com/afiqzudinhadi/zmk/issues/1), [#4](https://github.com/afiqzudinhadi/zmk/issues/4)).
+- Custom RGB effects can be added in the [ZMK fork](https://github.com/afiqzudinhadi/zmk/tree/rgb-layer) (`app/src/rgb_underglow.c`).
