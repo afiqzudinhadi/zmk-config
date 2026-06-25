@@ -257,6 +257,7 @@ Custom colors: `#define CYAN 0x00ffff` then `&ug CYAN`
 **Notes:**
 - Underglow LEDs turn off on effect #4 (mapped to `255` in pixel-lookup). To give them layer colors, map to key positions instead of `255`.
 - Brightness/hue/saturation controls don't affect layer indicator colors ([#1](https://github.com/afiqzudinhadi/zmk/issues/1), [#4](https://github.com/afiqzudinhadi/zmk/issues/4)).
+- **Right half** uses the same pixel-lookup as left half — colors are mirrored, not independently mapped. Looks correct on symmetric layers (CARP/QWRT) but shows wrong colors on asymmetric layers (HUB). Per-half pixel-lookup not yet implemented.
 - Custom RGB effects can be added in the [ZMK fork](https://github.com/afiqzudinhadi/zmk/tree/rgb-layer) (`app/src/rgb_underglow.c`).
 
 ### Keycodes
