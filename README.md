@@ -25,7 +25,7 @@ Custom keymaps for a Corne 42-key split keyboard running ZMK firmware.
     - [Bluetooth pairing issues](#bluetooth-pairing-issues)
     - [Layers not switching correctly](#layers-not-switching-correctly)
     - [Keyboard name not changing after flash](#keyboard-name-not-changing-after-flash)
-- [RGB Underglow](#rgb-underglow)
+- [RGB](#rgb)
 - [Enabling ZMK Studio](#enabling-zmk-studio)
 
 # Hardware Info
@@ -184,11 +184,25 @@ If `->STEN`, `->FPS`, or other layer switches go to CARP instead of the expected
 
 The BLE name is cached in device settings. Do a [Settings Reset](#settings-reset) and re-pair.
 
-# RGB Underglow
+# RGB
 
 ### Hardware
 
-54 WS2812 LEDs total — 6 underglow + 21 per-key per half. Chain length set in `config/nice_nano_v2.overlay`.
+54 WS2812 LEDs total — 6 underglow + 21 per-key per half. `chain-length = <27>` set in both `config/nice_nano_v2.overlay` and `corne.keymap` (the [ZMK fork](https://github.com/afiqzudinhadi/zmk/tree/rgb-layer)'s shield overlay defaults to 10, so keymap override is required).
+
+### LED Chain Order (Foostan Corne v1.1)
+
+Column-by-column snake, not row-by-row:
+```
+Chain 0-5:   Underglow (6 LEDs)
+Chain 6-9:   Thumb outer → bottom/home/top col0
+Chain 10-12: Top/home/bottom col1
+Chain 13-14: Thumb mid → Thumb inner
+Chain 15-17: Bottom/home/top col2
+Chain 18-20: Top/home/bottom col3
+Chain 21-23: Bottom/home/top col4
+Chain 24-26: Top/home/bottom col5
+```
 
 ### Config
 
@@ -197,12 +211,13 @@ RGB settings are in `config/corne.conf`:
 | Setting | Value | Description |
 |---------|-------|-------------|
 | `CONFIG_ZMK_RGB_UNDERGLOW` | `y` | Enable RGB |
-| `CONFIG_ZMK_RGB_UNDERGLOW_ON_START` | `n` | Off on boot |
+| `CONFIG_ZMK_RGB_UNDERGLOW_ON_START` | `y` | On at boot |
 | `CONFIG_WS2812_STRIP` | `y` | WS2812 LED driver |
-| `CONFIG_ZMK_RGB_UNDERGLOW_EFF_START` | `3` | Default effect: 0=Solid, 1=Breathe, 2=Spectrum, 3=Swirl |
+| `CONFIG_ZMK_RGB_UNDERGLOW_EFF_START` | `4` | Default effect (see effects table) |
 | `CONFIG_ZMK_RGB_UNDERGLOW_BRT_STEP` | `1` | Brightness step (%) |
-| `CONFIG_ZMK_RGB_UNDERGLOW_AUTO_OFF_IDLE` | `y` | Turn off when idle |
+| `CONFIG_ZMK_RGB_UNDERGLOW_AUTO_OFF_IDLE` | `n` | Stay on when idle |
 | `CONFIG_ZMK_RGB_UNDERGLOW_EXT_POWER` | `n` | Don't toggle external power with RGB |
+| `CONFIG_EXPERIMENTAL_RGB_LAYER` | `y` | Enable per-key layer indicators |
 
 Optional tuning (commented out in config):
 - `HUE_STEP` / `SAT_STEP` — hue and saturation adjustment step
@@ -210,14 +225,39 @@ Optional tuning (commented out in config):
 
 ### Effects
 
-| `EFF_START` | Effect |
-|-------------|--------|
-| 0 | Solid color |
-| 1 | Breathe |
-| 2 | Spectrum |
-| 3 | Swirl |
+| # | Effect | Description |
+|---|--------|-------------|
+| 0 | Solid | Single color, all LEDs |
+| 1 | Breathe | Pulsing on/off |
+| 2 | Spectrum | Rainbow cycle |
+| 3 | Swirl | Rotating rainbow |
+| 4 | Layer Indicators | Per-key colors based on active keymap layer |
 
 Cycle at runtime with `RGB_EFF` (next) / `RGB_EFR` (previous).
+
+### Per-Key Layer Indicators (Effect #4)
+
+Uses [darknao's per-key RGB patches](https://github.com/darknao/zmk) cherry-picked onto ZMK v0.3.0 at [afiqzudinhadi/zmk@rgb-layer](https://github.com/afiqzudinhadi/zmk/tree/rgb-layer).
+
+Shows different per-key colors based on active keymap layer. Colors are defined as hex RGB values in `corne.keymap` under the `underglow-layer` node.
+
+**Changing layer colors:** Edit `underglow-layer` bindings in `config/corne.keymap`. Each layer has 42 entries (one per key position):
+
+```dts
+carp_rgb {
+    layer-id = <0>;
+    bindings = <&ug GREEN &ug BLUE ...>;  // 42 entries
+};
+```
+
+Available colors (`dt-bindings/zmk/rgb_colors.h`): `GREEN` `RED` `BLUE` `TEAL` `ORANGE` `YELLOW` `GOLD` `PURPLE` `PINK` `WHITE` `___` (off)
+
+Custom colors: `#define CYAN 0x00ffff` then `&ug CYAN`
+
+**Notes:**
+- Underglow LEDs turn off on effect #4 (mapped to `255` in pixel-lookup). To give them layer colors, map to key positions instead of `255`.
+- Brightness/hue/saturation controls don't affect layer indicator colors ([#1](https://github.com/afiqzudinhadi/zmk/issues/1), [#4](https://github.com/afiqzudinhadi/zmk/issues/4)).
+- Custom RGB effects can be added in the [ZMK fork](https://github.com/afiqzudinhadi/zmk/tree/rgb-layer) (`app/src/rgb_underglow.c`).
 
 ### Keycodes
 
@@ -266,45 +306,3 @@ ZMK Studio is disabled by default in this config. To enable live keymap editing:
 **Limitations:** Cannot add combos, custom behaviors, or change display/RGB config.
 
 **Warning:** ZMK Studio saves changes to flash storage. These override the compiled keymap. If layers behave unexpectedly after flashing, do a [Settings Reset](#settings-reset).
-
-# Per-Key RGB Layer Indicators
-
-Uses [darknao's per-key RGB patches](https://github.com/darknao/zmk) cherry-picked onto ZMK v0.3.0 at [afiqzudinhadi/zmk@rgb-layer](https://github.com/afiqzudinhadi/zmk/tree/rgb-layer).
-
-Effect #4 (Layer Indicators) shows different per-key colors based on active keymap layer. Colors are defined as hex RGB values in `corne.keymap` under the `underglow-layer` node.
-
-### LED Chain Order (Foostan Corne v1.1)
-
-Column-by-column snake, not row-by-row:
-```
-Chain 0-5:   Underglow (6 LEDs)
-Chain 6-9:   Thumb outer → bottom/home/top col0
-Chain 10-12: Top/home/bottom col1
-Chain 13-14: Thumb mid → Thumb inner
-Chain 15-17: Bottom/home/top col2
-Chain 18-20: Top/home/bottom col3
-Chain 21-23: Bottom/home/top col4
-Chain 24-26: Top/home/bottom col5
-```
-
-### Changing Layer Colors
-
-Edit `underglow-layer` bindings in `config/corne.keymap`. Each layer has 42 entries (one per key position):
-
-```dts
-carp_rgb {
-    layer-id = <0>;
-    bindings = <&ug GREEN &ug BLUE ...>;  // 42 entries
-};
-```
-
-Available colors (`dt-bindings/zmk/rgb_colors.h`): `GREEN` `RED` `BLUE` `TEAL` `ORANGE` `YELLOW` `GOLD` `PURPLE` `PINK` `WHITE` `___` (off)
-
-Custom colors: `#define CYAN 0x00ffff` then `&ug CYAN`
-
-### Notes
-
-- **`chain-length = <27>`** must be set in `corne.keymap` — the fork's shield overlay defaults to 10.
-- **Underglow LEDs** turn off on effect #4 (mapped to `255` in pixel-lookup). To give them layer colors, map to key positions instead of `255`.
-- Brightness/hue/saturation controls don't affect layer indicator colors ([#1](https://github.com/afiqzudinhadi/zmk/issues/1), [#4](https://github.com/afiqzudinhadi/zmk/issues/4)).
-- Custom RGB effects can be added in the [ZMK fork](https://github.com/afiqzudinhadi/zmk/tree/rgb-layer) (`app/src/rgb_underglow.c`).
