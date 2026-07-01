@@ -217,7 +217,7 @@ RGB settings are in `config/corne.conf`:
 | `CONFIG_ZMK_RGB_UNDERGLOW_BRT_STEP` | `1` | Brightness step (%) |
 | `CONFIG_ZMK_RGB_UNDERGLOW_AUTO_OFF_IDLE` | `n` | Stay on when idle |
 | `CONFIG_ZMK_RGB_UNDERGLOW_EXT_POWER` | `n` | Don't toggle external power with RGB |
-| `CONFIG_EXPERIMENTAL_RGB_LAYER` | `y` | Enable per-key layer indicators |
+| `CONFIG_ZMK_RGB_EFFECT_LAYER` | `y` | Enable per-key layer indicators ([zmk-rgb-effects](https://github.com/afiqzudinhadi/zmk-rgb-effects) module) |
 
 Optional tuning (commented out in config):
 - `HUE_STEP` / `SAT_STEP` — hue and saturation adjustment step
@@ -237,7 +237,7 @@ Cycle at runtime with `RGB_EFF` (next) / `RGB_EFR` (previous).
 
 ### Per-Key Layer Indicators (Effect #4)
 
-Uses [darknao's per-key RGB patches](https://github.com/darknao/zmk) cherry-picked onto ZMK v0.3.0 at [afiqzudinhadi/zmk@rgb-layer](https://github.com/afiqzudinhadi/zmk/tree/rgb-layer).
+Provided by the [zmk-rgb-effects](https://github.com/afiqzudinhadi/zmk-rgb-effects) module, using the modular effect API in the [ZMK fork](https://github.com/afiqzudinhadi/zmk/tree/rgb-modular-v1.1). Based on [darknao's per-key RGB patches](https://github.com/darknao/zmk), refactored into a standalone ZMK module.
 
 Shows different per-key colors based on active keymap layer. Colors are defined as hex RGB values in `corne.keymap` under the `underglow-layer` node.
 
@@ -258,7 +258,7 @@ Custom colors: `#define CYAN 0x00ffff` then `&ug CYAN`
 - Underglow LEDs turn off on effect #4 (mapped to `255` in pixel-lookup). To give them layer colors, map to key positions instead of `255`.
 - Brightness/hue/saturation controls don't affect layer indicator colors ([#1](https://github.com/afiqzudinhadi/zmk/issues/1), [#4](https://github.com/afiqzudinhadi/zmk/issues/4)).
 - **Right half** uses the same pixel-lookup as left half — colors are mirrored, not independently mapped. Looks correct on symmetric layers (CARP/QWRT) but shows wrong colors on asymmetric layers (HUB). Per-half pixel-lookup not yet implemented.
-- Custom RGB effects can be added in the [ZMK fork](https://github.com/afiqzudinhadi/zmk/tree/rgb-layer) (`app/src/rgb_underglow.c`).
+- Custom RGB effects can be added as ZMK modules using `ZMK_RGB_EFFECT_DEFINE` — see [zmk-rgb-effects README](https://github.com/afiqzudinhadi/zmk-rgb-effects#adding-custom-effects).
 
 ### Keycodes
 
