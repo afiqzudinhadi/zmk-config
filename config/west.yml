@@ -15,12 +15,15 @@ manifest:
     - name: KeebMaker
       url-base: https://github.com/KeebMaker
   projects:
-    # Personal fork of ZMK v0.3.0 + darknao's per-key RGB layer patches.
-    # Base is v0.3.0 (not main) — see commit history for patch attribution.
+    # Personal fork of ZMK v0.3.0 + modular RGB effect API.
     - name: zmk
       remote: afiqzudinhadi-zmk
-      revision: rgb-layer
+      revision: rgb-modular-v1.1
       import: app/west.yml
+    # Modular RGB effects module (per-key layer, behaviors, DTS bindings)
+    - name: zmk-rgb-effects
+      remote: afiqzudinhadi-zmk
+      revision: v1.1.1
     # dongle_display
     - name: zmk-dongle-display
       remote: englmaxi
