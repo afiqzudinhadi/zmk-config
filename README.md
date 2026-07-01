@@ -188,7 +188,7 @@ The BLE name is cached in device settings. Do a [Settings Reset](#settings-reset
 
 ### Hardware
 
-54 WS2812 LEDs total — 6 underglow + 21 per-key per half. `chain-length = <27>` set in both `config/nice_nano_v2.overlay` and `corne.keymap` (the [ZMK fork](https://github.com/afiqzudinhadi/zmk/tree/rgb-modular-v1.1)'s shield overlay defaults to 10, so keymap override is required).
+54 WS2812 LEDs total — 6 underglow + 21 per-key per half. `chain-length = <27>` set in both `config/nice_nano_v2.overlay` and `corne.keymap` (the [ZMK fork](https://github.com/afiqzudinhadi/zmk/tree/rgb-layer)'s shield overlay defaults to 10, so keymap override is required).
 
 ### LED Chain Order (Foostan Corne v1.1)
 
