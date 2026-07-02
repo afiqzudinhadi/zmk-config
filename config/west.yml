@@ -24,6 +24,10 @@ manifest:
     - name: zmk-rgb-effects
       remote: afiqzudinhadi-zmk
       revision: v1.1.1
+    # Steno engine module (split-dict partition)
+    - name: zmk-steno-engine
+      remote: afiqzudinhadi-zmk
+      revision: split-combined
     # dongle_display
     - name: zmk-dongle-display
       remote: englmaxi
