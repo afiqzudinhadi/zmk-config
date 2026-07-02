@@ -43,6 +43,6 @@ manifest:
     # Steno engine
     - name: zmk-steno-engine
       remote: afiqzudinhadi-zmk
-      revision: optimize-dict
+      revision: split-combined
   self:
     path: config
