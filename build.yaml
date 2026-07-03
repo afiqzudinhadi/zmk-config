@@ -4,6 +4,7 @@ include:
   ### CORNE START ###
   - board: nice_nano_v2
     shield: corne_left nice_oled
+    snippet: zmk-usb-logging
     artifact-name: nice_corne_left_oled_rgb
   - board: nice_nano_v2
     shield: corne_right nice_oled
