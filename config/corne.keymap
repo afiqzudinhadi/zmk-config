@@ -13,6 +13,8 @@
 #include <dt-bindings/zmk/backlight.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/reset.h>
+#include <behaviors/steno_engine.dtsi>
+#include <dt-bindings/zmk/steno_keys.h>
 #include <dt-bindings/zmk/rgb_colors.h>
 
 &led_strip {
@@ -199,10 +201,10 @@
         steno_layer {
             display-name = "STEN";
             bindings = <
-&none   &none  &none  &none  &none  &none      &none  &none  &none  &none  &none  &to 4
-&mo 4   &none  &none  &none  &none  &none      &none  &none  &none  &none  &none  &none
-&none   &none  &none  &none  &none  &none      &none  &none  &none  &none  &none  &none
-                       &none  &none  &none      &none  &none  &none
+&steno STENO_NUM &steno STENO_SL &steno STENO_TL &steno STENO_PL &steno STENO_HL &steno STENO_STAR      &steno STENO_STAR &steno STENO_FR &steno STENO_PR &steno STENO_LR &steno STENO_TR &steno STENO_DR
+&mo 4            &steno STENO_SL &steno STENO_KL &steno STENO_WL &steno STENO_RL &steno STENO_STAR      &steno STENO_STAR &steno STENO_RR &steno STENO_BR &steno STENO_GR &steno STENO_SR &steno STENO_ZR
+&none            &none           &none           &none           &none           &none                  &none             &none           &none           &none           &none           &to 4
+                                                 &none           &steno STENO_A  &steno STENO_O         &steno STENO_E    &steno STENO_U  &none
             >;
         };
 
