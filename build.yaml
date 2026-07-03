@@ -1,28 +1,18 @@
 ---
 include:
 
-  ### BISECT MATRIX (left half, usb logging snippet on all) ###
+  ### CORNE START ###
   - board: nice_nano_v2
     shield: corne_left nice_oled
-    snippet: zmk-usb-logging
-    cmake-args: -DCONFIG_STENO_ENGINE=n
-    artifact-name: bisect_A_nosteno
+    artifact-name: nice_corne_left_oled_rgb
   - board: nice_nano_v2
-    shield: corne_left nice_oled
-    snippet: zmk-usb-logging
-    artifact-name: bisect_B_full
+    shield: corne_right nice_oled
+    cmake-args: -DCONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_CAT=n -DCONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_KM=y
+    artifact-name: nice_corne_right_oled_rgb
+  ### CORNE END ###
+
+  ### SETTINGS_RESET START ###
   - board: nice_nano_v2
-    shield: corne_left nice_oled
-    snippet: zmk-usb-logging
-    cmake-args: -DCONFIG_STENO_DEBUG_NO_GATT=y
-    artifact-name: bisect_C_nogatt
-  - board: nice_nano_v2
-    shield: corne_left nice_oled
-    snippet: zmk-usb-logging
-    cmake-args: -DCONFIG_STENO_DEBUG_NO_EMBED=y
-    artifact-name: bisect_D_noembed
-  - board: nice_nano_v2
-    shield: corne_left nice_oled
-    snippet: zmk-usb-logging
-    cmake-args: -DCONFIG_STENO_DEBUG_NO_GATT=y -DCONFIG_STENO_DEBUG_NO_EMBED=y
-    artifact-name: bisect_E_nogatt_noembed
+    shield: settings_reset
+    artifact-name: nice_settings_reset
+  ### SETTINGS_RESET END ###
