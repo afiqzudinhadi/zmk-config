@@ -5,15 +5,9 @@ manifest:
     # ZMK fork with per-key RGB layer support (darknao's patches on v0.3.0)
     - name: afiqzudinhadi-zmk
       url-base: https://github.com/afiqzudinhadi
-    # dongle_display
-    - name: englmaxi
-      url-base: https://github.com/englmaxi
-    # nice_oled - nice_epaper - dongle_display!view - oled Adapter
+    # nice_oled widgets (battery, luna, animations)
     - name: mctechnology17
       url-base: https://github.com/mctechnology17
-    # fork of zmk-nice-oled with custom KM medal animation
-    - name: KeebMaker
-      url-base: https://github.com/KeebMaker
   projects:
     # Personal fork of ZMK v0.3.0 + modular RGB effect API.
     - name: zmk
@@ -24,20 +18,8 @@ manifest:
     - name: zmk-rgb-effects
       remote: afiqzudinhadi-zmk
       revision: v1.1.1
-    # dongle_display
-    - name: zmk-dongle-display
-      remote: englmaxi
-      revision: v0.3
-    # nice_oled - nice_epaper (fork with custom KM medal animation)
+    # nice_oled widgets (battery, luna, animations)
     - name: zmk-nice-oled
-      remote: KeebMaker
-      revision: km-medal-animation
-    # dongle_display!view
-    - name: zmk-dongle-display-view
-      remote: mctechnology17
-      revision: main
-    # oled Adapter
-    - name: zmk-oled-adapter
       remote: mctechnology17
       revision: main
   self:
