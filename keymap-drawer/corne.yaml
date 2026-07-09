@@ -1,7 +1,7 @@
 layout: {zmk_keyboard: corne}
 layers:
   CARP:
-  - '`'
+  - {t: '`', h: Esc}
   - Q
   - G
   - M
@@ -12,8 +12,8 @@ layers:
   - U
   - B
   - ;
-  - {t: HUB, h: toggle}
-  - HUB
+  - ↹
+  - NAVI
   - D
   - S
   - T
@@ -37,14 +37,14 @@ layers:
   - .
   - /
   - $$mdi:apple-keyboard-shift$$
-  - '&td_rgb'
   - $$mdi:apple-keyboard-control$$
+  - ⏎
   - $$mdi:apple-keyboard-command$$
   - ␣
+  - $$mdi:backspace-outline$$
   - $$mdi:apple-keyboard-option$$
-  - {t: MUTE, h: PLAY PAUSE}
   QWRT:
-  - '`'
+  - {t: '`', h: Esc}
   - Q
   - W
   - E
@@ -55,8 +55,8 @@ layers:
   - I
   - O
   - P
-  - {t: HUB, h: toggle}
-  - HUB
+  - ↹
+  - NAVI
   - A
   - S
   - D
@@ -80,55 +80,14 @@ layers:
   - .
   - /
   - $$mdi:apple-keyboard-shift$$
-  - '&td_rgb'
   - $$mdi:apple-keyboard-control$$
+  - ⏎
   - $$mdi:apple-keyboard-command$$
   - ␣
+  - $$mdi:backspace-outline$$
   - $$mdi:apple-keyboard-option$$
-  - {t: MUTE, h: PLAY PAUSE}
-  STEN:
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - {t: HUB, h: toggle}
-  - HUB
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
+  STEN: ['', '', '', '', '', '', '', '', '', '', '', '', NAVI, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
+    '', '', '', '']
   FPS:
   - {t: '1', h: Esc}
   - '2'
@@ -172,25 +131,25 @@ layers:
   - ''
   - ''
   - ''
-  HUB:
-  - BT CLR
-  - BT 1
-  - BT 2
-  - BT 3
-  - BT 4
-  - BT 5
+  NAVI:
+  - {t: HUB, h: toggle}
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
   - +
   - '['
   - ↑
   - ']'
   - '*'
   - '='
-  - {t: OUT TOG, type: held}
-  - {t: '$$mdi:led-on$$', s: '$$mdi:palette$$', type: sym_by_sym}
-  - {t: '$$mdi:led-outline$$', s: '$$mdi:eyedropper$$', type: sym_by_sym}
-  - {t: '$$mdi:led-outline$$', s: '$$tabler:brightness-down$$', type: sym_by_sym}
-  - BRI UP
-  - Vol Up
+  - {type: held}
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '0'
   - '-'
   - ←
   - ↓
@@ -198,23 +157,66 @@ layers:
   - /
   - \
   - $$mdi:apple-keyboard-shift$$
-  - {t: '$$mdi:led-outline$$', s: '$$mdi:palette$$', type: sym_by_sym}
-  - {t: '$$mdi:led-on$$', s: '$$mdi:eyedropper$$', type: sym_by_sym}
-  - {t: '$$mdi:led-on$$', s: '$$tabler:brightness-up$$', type: sym_by_sym}
-  - BRI DN
-  - Vol Down
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - $$mdi:apple-keyboard-shift$$
+  - $$mdi:apple-keyboard-control$$
+  - ⏎
+  - $$mdi:apple-keyboard-command$$
+  - ␣
+  - $$mdi:backspace-outline$$
+  - $$mdi:apple-keyboard-option$$
+  HUB:
   - {t: CARP, h: toggle}
   - {t: QWRT, h: toggle}
   - {t: STEN, h: toggle}
   - {t: FPS, h: toggle}
+  - ''
+  - ⏯
+  - BT 1
+  - BT 2
+  - BT 3
+  - BT 4
+  - BT 5
+  - BT CLR
+  - ''
+  - ''
+  - ''
+  - ''
+  - BRI UP
+  - Vol Up
+  - {t: '$$mdi:led-on$$', s: '$$mdi:palette$$', type: sym_by_sym}
+  - {t: '$$mdi:led-outline$$', s: '$$mdi:eyedropper$$', type: sym_by_sym}
+  - {t: '$$mdi:led-on$$', s: '$$tabler:brightness-up$$', type: sym_by_sym}
   - '&td_colors'
-  - $$mdi:apple-keyboard-shift$$
-  - '&td_rgb'
-  - $$mdi:apple-keyboard-control$$
-  - $$mdi:apple-keyboard-command$$
-  - ␣
-  - $$mdi:apple-keyboard-option$$
-  - {t: MUTE, h: PLAY PAUSE}
+  - ''
+  - OUT TOG
+  - ''
+  - ''
+  - ''
+  - ''
+  - BRI DN
+  - Vol Down
+  - {t: '$$mdi:led-outline$$', s: '$$mdi:palette$$', type: sym_by_sym}
+  - {t: '$$mdi:led-on$$', s: '$$mdi:eyedropper$$', type: sym_by_sym}
+  - {t: '$$mdi:led-outline$$', s: '$$tabler:brightness-down$$', type: sym_by_sym}
+  - ''
+  - ''
+  - ''
+  - ⏮️
+  - ⏭️
+  - MUTE
+  - {t: '$$mdi:led-on$$', h: '$$mdi:toggle-switch$$', s: '$$mdi:led-outline$$', type: toggle}
+  - {t: '$$mdi:led-on$$', h: '$$mdi:page-next-outline$$', type: tap_dance}
+  - {t: '$$mdi:led-on$$', h: '$$mdi:page-previous-outline$$', type: tap_dance}
 combos:
 - p: [1, 13]
   k: '1'
@@ -246,17 +248,3 @@ combos:
 - p: [10, 22]
   k: '0'
   l: [CARP, QWRT]
-- p: [8, 9]
-  k: $$mdi:backspace-outline$$
-  l: [CARP, QWRT]
-- p: [20, 21]
-  k: ⏎
-  l: [CARP, QWRT]
-- p: [2, 3]
-  k: Esc
-  l: [CARP, QWRT]
-  draw_separate: true
-- p: [14, 15]
-  k: ↹
-  l: [CARP, QWRT]
-  draw_separate: true

@@ -27,6 +27,12 @@
             tapping-term-ms = <200>;
             bindings = <&kp>, <&kp>;
         };
+        ht_esc_grave: ht_esc_grave {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&kp>;
+        };
         td_rgb: td_rgb {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -58,14 +64,6 @@
         combo_8 { key-positions = <8 20>; bindings = <&kp N8>; layers = <0 1>; };
         combo_9 { key-positions = <9 21>; bindings = <&kp N9>; layers = <0 1>; };
         combo_0 { key-positions = <10 22>; bindings = <&kp N0>; layers = <0 1>; };
-        // I+O (QWRT) / U+B (CARP) = BSPC
-        combo_bspc { key-positions = <8 9>; bindings = <&kp BSPC>; layers = <0 1>; };
-        // K+L (QWRT) / E+O (CARP) = ENTER
-        combo_enter { key-positions = <20 21>; bindings = <&kp RET>; layers = <0 1>; };
-        // W+E (QWRT) / G+M (CARP) = ESC
-        combo_esc { key-positions = <2 3>; bindings = <&kp ESC>; layers = <0 1>; };
-        // S+D (QWRT) / S+T (CARP) = TAB
-        combo_tab { key-positions = <14 15>; bindings = <&kp TAB>; layers = <0 1>; };
     };
 
     /*
@@ -157,17 +155,31 @@
             >;
         };
 
-        hub_rgb {
+        navi_rgb {
             layer-id = <4>;
             bindings = <
-                &ug RED    &ug PURPLE &ug PURPLE &ug PURPLE &ug PURPLE &ug PURPLE
-                &ug BLUE   &ug YELLOW &ug YELLOW &ug YELLOW &ug BLUE   &ug BLUE
-                &ug ORANGE &ug ORANGE &ug ORANGE &ug ORANGE &ug TEAL   &ug TEAL
-                &ug BLUE   &ug YELLOW &ug YELLOW &ug YELLOW &ug BLUE   &ug BLUE
-                &ug WHITE  &ug ORANGE &ug ORANGE &ug ORANGE &ug TEAL   &ug TEAL
-                &ug GREEN  &ug GREEN  &ug GREEN  &ug GREEN  &ug GOLD   &ug WHITE
-                &ug PURPLE &ug WHITE  &ug WHITE
-                &ug WHITE  &ug WHITE  &ug PURPLE
+                &ug PURPLE &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW
+                &ug BLUE   &ug BLUE   &ug BLUE   &ug BLUE   &ug BLUE   &ug BLUE
+                &ug ___    &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW &ug YELLOW
+                &ug BLUE   &ug BLUE   &ug BLUE   &ug BLUE   &ug BLUE   &ug BLUE
+                &ug WHITE  &ug ___    &ug ___    &ug ___    &ug ___    &ug ___
+                &ug ___    &ug ___    &ug ___    &ug ___    &ug ___    &ug WHITE
+                &ug WHITE  &ug WHITE  &ug WHITE
+                &ug WHITE  &ug WHITE  &ug WHITE
+            >;
+        };
+
+        hub_rgb {
+            layer-id = <5>;
+            bindings = <
+                &ug GREEN  &ug GREEN  &ug GREEN  &ug GREEN  &ug ___    &ug ORANGE
+                &ug PURPLE &ug PURPLE &ug PURPLE &ug PURPLE &ug PURPLE &ug RED
+                &ug ___    &ug ___    &ug ___    &ug ___    &ug TEAL   &ug TEAL
+                &ug PURPLE &ug PURPLE &ug PURPLE &ug ORANGE &ug ___    &ug WHITE
+                &ug ___    &ug ___    &ug ___    &ug ___    &ug TEAL   &ug TEAL
+                &ug PURPLE &ug PURPLE &ug PURPLE &ug ___    &ug ___    &ug ___
+                &ug ORANGE &ug ORANGE &ug ORANGE
+                &ug BLUE   &ug BLUE   &ug BLUE
             >;
             fade-delay = <15>;
         };
@@ -179,27 +191,27 @@
         carpalx_layer {
             display-name = "CARP";
             bindings = <
-&kp GRAVE  &kp Q   &kp G   &kp M     &kp L     &kp W        &kp Y     &kp F    &kp U      &kp B    &kp SEMI  &to 4
+&ht_esc_grave ESC GRAVE  &kp Q   &kp G   &kp M     &kp L     &kp W        &kp Y     &kp F    &kp U      &kp B    &kp SEMI  &kp TAB
 &mo 4  &kp D   &kp S   &kp T     &kp N     &kp R        &kp I     &kp A    &kp E      &kp O    &kp H     &kp SQT
 &kp LSHFT  &kp Z   &kp X   &kp C     &kp V     &kp J        &kp K     &kp P    &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-                            &td_rgb &kp LCTRL &kp LGUI  &kp SPACE &kp RALT &ht_mute_pp C_PLAY_PAUSE C_MUTE
+                            &kp LCTRL &kp RET &kp LGUI  &kp SPACE &kp BSPC &kp RALT
             >;
         };
 
         qwerty_layer {
             display-name = "QWRT";
             bindings = <
-&kp GRAVE  &kp Q   &kp W   &kp E     &kp R     &kp T        &kp Y     &kp U    &kp I      &kp O    &kp P     &to 4
+&ht_esc_grave ESC GRAVE  &kp Q   &kp W   &kp E     &kp R     &kp T        &kp Y     &kp U    &kp I      &kp O    &kp P     &kp TAB
 &mo 4  &kp A   &kp S   &kp D     &kp F     &kp G        &kp H     &kp J    &kp K      &kp L    &kp SEMI  &kp SQT
 &kp LSHFT  &kp Z   &kp X   &kp C     &kp V     &kp B        &kp N     &kp M    &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-                            &td_rgb &kp LCTRL &kp LGUI  &kp SPACE &kp RALT &ht_mute_pp C_PLAY_PAUSE C_MUTE
+                            &kp LCTRL &kp RET &kp LGUI  &kp SPACE &kp BSPC &kp RALT
             >;
         };
 
         steno_layer {
             display-name = "STEN";
             bindings = <
-&none   &none  &none  &none  &none  &none      &none  &none  &none  &none  &none  &to 4
+&none   &none  &none  &none  &none  &none      &none  &none  &none  &none  &none  &none
 &mo 4   &none  &none  &none  &none  &none      &none  &none  &none  &none  &none  &none
 &none   &none  &none  &none  &none  &none      &none  &none  &none  &none  &none  &none
                        &none  &none  &none      &none  &none  &none
@@ -209,20 +221,30 @@
         fps_layer {
             display-name = "FPS";
             bindings = <
-&mt ESC N1 &kp N2    &kp Q   &kp W   &mt N3 E &mt N4 R    &kp N5  &kp N6  &kp N7  &kp N8  &kp N9    &to 4
+&mt ESC N1 &kp N2    &kp Q   &kp W   &mt N3 E &mt N4 R    &kp N5  &kp N6  &kp N7  &kp N8  &kp N9    &to 5
 &kp TAB    &kp LSHFT &kp A   &kp S   &kp D   &kp F        &none   &none   &none   &none   &none     &none
 &mt LALT M &kp Z     &kp X   &kp C   &kp V   &kp G        &none   &none   &none   &none   &none     &none
                               &kp T &kp LCTRL &kp SPACE  &none   &none   &none
             >;
         };
 
+        navi_layer {
+            display-name = "NAVI";
+            bindings = <
+&to 5       &kp N1  &kp N2  &kp N3  &kp N4  &kp N5      &kp PLUS  &kp LBKT  &kp UP    &kp RBKT  &kp ASTRK  &kp EQUAL
+&none       &kp N6  &kp N7  &kp N8  &kp N9  &kp N0      &kp MINUS &kp LEFT  &kp DOWN  &kp RIGHT &kp FSLH   &kp BSLH
+&kp LSHFT   &none   &none   &none   &none   &none       &none     &none     &none     &none     &none      &kp RSHFT
+                             &kp LCTRL &kp RET &kp LGUI  &kp SPACE &kp BSPC  &kp RALT
+            >;
+        };
+
         hub_layer {
             display-name = "HUB";
             bindings = <
-&bt BT_CLR      &bt BT_SEL 0        &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &kp PLUS  &kp LBKT    &kp UP      &kp RBKT      &kp ASTRK     &kp EQUAL
-&out OUT_TOG    &rgb_ug RGB_HUI     &rgb_ug RGB_SAI &rgb_ug RGB_BRI &kp C_BRI_UP    &kp C_VOL_UP    &kp MINUS &kp LEFT    &kp DOWN    &kp RIGHT     &kp FSLH      &kp BSLH
-&kp LSHFT       &rgb_ug RGB_HUD     &rgb_ug RGB_SAD &rgb_ug RGB_BRD &kp C_BRI_DN    &kp C_VOL_DN    &to 0     &to 1       &to 2       &to 3         &td_colors &kp RSHFT
-                                                    &td_rgb &kp LCTRL       &kp LGUI        &kp SPACE &kp RALT    &ht_mute_pp C_PLAY_PAUSE C_MUTE
+&to 0           &to 1           &to 2           &to 3           &none           &kp C_PP        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR
+&none           &none           &none           &none           &kp C_BRI_UP    &kp C_VOL_UP    &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRD &td_colors &none         &out OUT_TOG
+&none           &none           &none           &none           &kp C_BRI_DN    &kp C_VOL_DN    &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_BRI &none     &none          &none
+                                                &kp C_PREV      &kp C_NEXT      &kp C_MUTE      &rgb_ug RGB_TOG &rgb_ug RGB_EFR &rgb_ug RGB_EFF
             >;
         };
 
