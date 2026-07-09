@@ -77,7 +77,7 @@ git clone git@github.com:afiqzudinhadi/zmk-config.git
 
 ### Edit Config Files
 
-For full customization (combos, steno layer, behaviors):
+For full customization (layers, behaviors):
 
 ```
 config/
@@ -211,7 +211,7 @@ RGB settings are in `config/corne.conf`:
 | Setting | Value | Description |
 |---------|-------|-------------|
 | `CONFIG_ZMK_RGB_UNDERGLOW` | `y` | Enable RGB |
-| `CONFIG_ZMK_RGB_UNDERGLOW_ON_START` | `y` | On at boot |
+| `CONFIG_ZMK_RGB_UNDERGLOW_ON_START` | `n` | Off at boot (toggle on via HUB layer) |
 | `CONFIG_WS2812_STRIP` | `y` | WS2812 LED driver |
 | `CONFIG_ZMK_RGB_UNDERGLOW_EFF_START` | `4` | Default effect (see effects table) |
 | `CONFIG_ZMK_RGB_UNDERGLOW_BRT_STEP` | `1` | Brightness step (%) |
@@ -277,9 +277,12 @@ Docs: [zmk.dev/docs/keymaps/behaviors/underglow](https://zmk.dev/docs/keymaps/be
 
 ### Runtime Controls (HUB Layer)
 
+Access: hold NAVI key (pos 12) → press HUB (pos 0), or from FPS layer (pos 11).
+
 | Key | Action |
 |-----|--------|
-| `[RGB]` | Tap-dance: 1×=toggle, 2×=effect fwd, 3×=effect rev |
+| `TOG` | RGB on/off toggle |
+| `EFF` / `EFR` | Next/previous effect |
 | `[CLR]` | Tap-dance color presets: purple → white → red → blue → green |
 | `HUE+` / `HUE-` | Adjust hue |
 | `SAT+` / `SAT-` | Adjust saturation |

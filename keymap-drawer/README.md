@@ -12,35 +12,30 @@
 ## Layer 0: CARP (Carpalx QGMLWY)
 
 ```
-`      Q  G  M  L  W  |  Y  F  U  B  ;    ->HUB
-[HUB]  D  S  T  N  R  |  I  A  E  O  H    '
+`/ESC  Q  G  M  L  W  |  Y  F  U  B  ;    TAB
+[NAVI] D  S  T  N  R  |  I  A  E  O  H    '
 LSHFT  Z  X  C  V  J  |  K  P  ,  .  /    RSHFT
-        [RGB]  CTRL  GUI | SPC  ALT  MUTE/PP
+          CTRL  RET  GUI | SPC  BSPC  ALT
 ```
 
 **Combos (layers 0+1):**
 - Top+home row same col = `1`-`0`, shift+combo = `!` `@` `#` `$` `%` `^` `&` `*` `(` `)`
-- G+M (W+E on QWRT) = ESC
-- S+T (S+D on QWRT) = TAB
-- U+B (I+O on QWRT) = BSPC
-- E+O (K+L on QWRT) = ENTER
 
 | Key | Behavior |
 |-----|----------|
-| `[HUB]` | Hold opens HUB layer, release goes back |
-| `[RGB]` | Tap-dance: 1x=toggle, 2x=effect fwd, 3x=effect rev |
-| `MUTE/PP` | Tap mute, hold play/pause |
+| `` ` ``/ESC | Tap = grave, hold = ESC |
+| `[NAVI]` | Hold opens NAVI layer, release goes back |
 
 ## Layer 1: QWRT (QWERTY)
 
 ```
-`      Q  W  E  R  T  |  Y  U  I  O  P    ->HUB
-[HUB]  A  S  D  F  G  |  H  J  K  L  ;    '
+`/ESC  Q  W  E  R  T  |  Y  U  I  O  P    TAB
+[NAVI] A  S  D  F  G  |  H  J  K  L  ;    '
 LSHFT  Z  X  C  V  B  |  N  M  ,  .  /    RSHFT
-        [RGB]  CTRL  GUI | SPC  ALT  MUTE/PP
+          CTRL  RET  GUI | SPC  BSPC  ALT
 ```
 
-Combos: same as CARP (top+home = 1-0, W+E = ESC, S+D = TAB, I+O = BSPC, K+L = ENTER)
+Combos: same as CARP (top+home = 1-0)
 
 ## Layer 2: STEN (Placeholder)
 
@@ -61,14 +56,28 @@ M/ALT  Z     X   C   V     G    | _    _    _    _    _    _
 | `E` | Tap = E, hold = 3 |
 | `R` | Tap = R, hold = 4 |
 | `M` | Tap = M, hold = ALT |
+| `->HUB` | Press to go to HUB layer |
 
-## Layer 4: HUB (Utility — BT, RGB, Media, Nav)
+## Layer 4: NAVI (Numbers, Nav, Symbols)
 
 ```
-BT_CLR BT0    BT1    BT2    BT3     BT4     | +      [     UP    ]     *    =
-OUT_TOG HUE+  SAT+   BRT+   SCRN+   VOL+    | -      LEFT  DOWN  RIGHT /    \
-LSHFT  HUE-   SAT-   BRT-   SCRN-   VOL-    | ->CARP ->QWRT ->STEN ->FPS [CLR] RSHFT
-             [RGB]    CTRL   GUI              | SPC    ALT   MUTE/PP
+->HUB  1  2  3  4  5  |  +   [   UP   ]   *   =
+  _    6  7  8  9  0  |  -   LEFT DOWN RIGHT /  \
+LSHFT  _  _  _  _  _  |  _   _    _    _   _   RSHFT
+          CTRL  RET  GUI | SPC  BSPC  ALT
+```
+
+| Key | Action |
+|-----|--------|
+| `->HUB` | Press to go to HUB layer |
+
+## Layer 5: HUB (Media, BT, RGB, Layer Switch)
+
+```
+->CARP ->QWRT ->STEN ->FPS  _    PP   | BT0  BT1  BT2  BT3  BT4  BT_CLR
+  _      _      _     _   SCRN+ VOL+  | HUE+ SAT+ BRT- [CLR]  _   OUT_TOG
+  _      _      _     _   SCRN- VOL-  | HUE- SAT- BRT+  _     _    _
+                    PREV  NEXT  MUTE   | TOG  EFR  EFF
 ```
 
 | Key | Action |
@@ -77,6 +86,9 @@ LSHFT  HUE-   SAT-   BRT-   SCRN-   VOL-    | ->CARP ->QWRT ->STEN ->FPS [CLR] R
 | `HUE/SAT/BRT` | RGB underglow hue, saturation, brightness |
 | `SCRN` | Display brightness (C_BRI_UP/DN) |
 | `VOL` | Volume up/down |
-| `[RGB]` | Tap-dance: 1x=toggle, 2x=effect fwd, 3x=effect rev |
+| `PREV/NEXT` | Track previous/next |
+| `PP` | Play/pause |
+| `MUTE` | Mute toggle |
+| `TOG` | RGB on/off |
+| `EFF/EFR` | RGB effect next/previous |
 | `[CLR]` | Tap-dance color presets: 1x=purple, 2x=white, 3x=red, 4x=blue, 5x=green |
-| `MUTE/PP` | Tap mute, hold play/pause |
