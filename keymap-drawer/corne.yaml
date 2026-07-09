@@ -1,7 +1,7 @@
 layout: {zmk_keyboard: corne}
 layers:
   CARP:
-  - {t: '`', h: Esc}
+  - {t: '`', s: Esc, type: tap_dance}
   - Q
   - G
   - M
@@ -44,7 +44,7 @@ layers:
   - $$mdi:backspace-outline$$
   - $$mdi:apple-keyboard-option$$
   QWRT:
-  - {t: '`', h: Esc}
+  - {t: '`', s: Esc, type: tap_dance}
   - Q
   - W
   - E
