@@ -155,11 +155,11 @@ parse_config:
     '&kp C_VOL_UP': Vol+
     '&kp C_VOL_DN': Vol-
 
-    '&bt BT_SEL 0': BT 1
-    '&bt BT_SEL 1': BT 2
-    '&bt BT_SEL 2': BT 3
-    '&bt BT_SEL 3': BT 4
-    '&bt BT_SEL 4': BT 5
+    '&bt_back 0': BT 1
+    '&bt_back 1': BT 2
+    '&bt_back 2': BT 3
+    '&bt_back 3': BT 4
+    '&bt_back 4': BT 5
 
     # Display
     'DISPLAY_UP': {t: $$mdi:television-classic$$, h: $$mdi:arrow-up$$, type: tap_dance}

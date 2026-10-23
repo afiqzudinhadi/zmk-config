@@ -82,6 +82,7 @@ LSHFT  _  _  _  _  _  |  _   _    _    _   _   RSHFT
 
 | Key | Action |
 |-----|--------|
+| `BT0`-`BT4` | Select BT profile, then return to the layout you came from |
 | `OUT_TOG` | Toggle USB/BLE output |
 | `HUE/SAT/BRT` | RGB underglow hue, saturation, brightness |
 | `SCRN` | Display brightness (C_BRI_UP/DN) |

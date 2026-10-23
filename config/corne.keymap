@@ -21,6 +21,12 @@
 
 / {
     behaviors {
+        // BT select, then drop HUB so the layout underneath (CARP/QWRT/FPS) comes back.
+        bt_back: bt_back {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_param_1to2>, <&bt BT_SEL MACRO_PLACEHOLDER>, <&tog 5>;
+        };
         ht_mute_pp: ht_mute_pp {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -221,7 +227,7 @@
         fps_layer {
             display-name = "FPS";
             bindings = <
-&mt ESC N1 &kp N2    &kp Q   &kp W   &mt N3 E &mt N4 R    &kp N5  &kp N6  &kp N7  &kp N8  &kp N9    &to 5
+&mt ESC N1 &kp N2    &kp Q   &kp W   &mt N3 E &mt N4 R    &kp N5  &kp N6  &kp N7  &kp N8  &kp N9    &tog 5
 &kp TAB    &kp LSHFT &kp A   &kp S   &kp D   &kp F        &none   &none   &none   &none   &none     &none
 &mt LALT M &kp Z     &kp X   &kp C   &kp V   &kp G        &none   &none   &none   &none   &none     &none
                               &kp T &kp LCTRL &kp SPACE  &none   &none   &none
@@ -231,7 +237,7 @@
         navi_layer {
             display-name = "NAVI";
             bindings = <
-&to 5       &kp N1  &kp N2  &kp N3  &kp N4  &kp N5      &kp PLUS  &kp LBKT  &kp UP    &kp RBKT  &kp ASTRK  &kp EQUAL
+&tog 5      &kp N1  &kp N2  &kp N3  &kp N4  &kp N5      &kp PLUS  &kp LBKT  &kp UP    &kp RBKT  &kp ASTRK  &kp EQUAL
 &none       &kp N6  &kp N7  &kp N8  &kp N9  &kp N0      &kp MINUS &kp LEFT  &kp DOWN  &kp RIGHT &kp FSLH   &kp BSLH
 &kp LSHFT   &none   &none   &none   &none   &none       &none     &none     &none     &none     &none      &kp RSHFT
                              &kp LCTRL &kp RET &kp LGUI  &kp SPACE &kp BSPC  &kp RALT
@@ -241,7 +247,7 @@
         hub_layer {
             display-name = "HUB";
             bindings = <
-&to 0           &to 1           &to 2           &to 3           &none           &kp C_PP        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR
+&to 0           &to 1           &to 2           &to 3           &none           &kp C_PP        &bt_back 0     &bt_back 1     &bt_back 2     &bt_back 3     &bt_back 4     &bt BT_CLR
 &none           &none           &none           &none           &kp C_BRI_UP    &kp C_VOL_UP    &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRD &td_colors &none         &out OUT_TOG
 &none           &none           &none           &none           &kp C_BRI_DN    &kp C_VOL_DN    &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_BRI &none     &none          &none
                                                 &kp C_PREV      &kp C_NEXT      &kp C_MUTE      &rgb_ug RGB_TOG &rgb_ug RGB_EFR &rgb_ug RGB_EFF
